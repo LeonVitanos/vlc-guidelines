@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guidelines</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin: 20px auto;
+            width: 80%;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .first-image {
+            width: 350px;
+            margin-top: 10px
+        }
+        .mid-sized-image {
+            width: 880px;
+        }
+        .larger-image {
+            width: 950px;
+        }
+        table {
+            width: 100%;
+            max-width: 900px;
+            margin: 10px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .boxed {
+            display: inline-block;
+            border: 1px solid black;
+            padding: 2px 5px;
+        }
+        th:nth-child(1), td:nth-child(1) {
+            width: 30%; /* Make the first column wider */
+        }
+        th:nth-child(2), td:nth-child(2) {
+            width: 40%;
+        }
+        th:nth-child(3), td:nth-child(3) {
+            width: 30%;
+        }
+        h2 {
+            margin-bottom: 10px;
+            margin-top: 50px;
+        }
+        .custom-margin {
+	    margin-top: 20px; /* Adjust as needed */
+	}
+    </style>
+</head>
+<body>
+    <div class="container">
+    	<h2 class="custom-margin">Properties of a Grid Item</h2>
+        <img src="GRIDITEM.png" alt="Grid Item" class="first-image">
+        <table>
+            <tr><th>Property</th><th>Guideline</th><th>VLCStyle</th></tr>
+            <tr><td><span class="boxed">1</span> Background padding</td><td>8px</td><td>gridItemSelectedBorder</td></tr>
+            <tr><td><span class="boxed">2</span> Thumbnail dimensions</td><td>Fill <span class="boxed">7</span>, with <span class="boxed">1</span> as padding, a 16:9 aspect ratio, and a minimum width of 305px</td><td>-</td></tr>
+            <tr><td><span class="boxed">3</span> Title top margin</td><td>12px</td><td>gridItemTitle_topMargin</td></tr>
+            <tr><td><span class="boxed">4</span> Title font size</td><td>13px</td><td>gridItemTitle_height</td></tr>
+            <tr><td><span class="boxed">5</span> Subtitle top margin</td><td>9px</td><td>gridItemSubtitle_topMargin</td></tr>
+            <tr><td><span class="boxed">6</span> Subtitle font size</td><td>12px</td><td>gridItemSubtitle_height</td></tr>
+            <tr><td><span class="boxed">7</span> Cell width</td><td>Responsive and maximized, constrained by available window width, minimum thumbnail width, and horizontal spacing (gutter) of grid items</td><td>-</td></tr>
+        </table>
+    </div>
+
+    <div class="container">
+    <h2>General Layout Properties</h2>
+        <img src="consistencyGuidelines.png" alt="Consistency Guidelines" class="mid-sized-image">
+        <table>
+            <tr><th>Property</th><th>Guideline</th><th>VLCStyle</th></tr>
+            <tr><td><span class="boxed">1</span> Top padding of top-most title</td><td>32px</td><td>layoutTitle_top_padding</td></tr>
+            <tr><td><span class="boxed">2</span> Bottom padding of title</td><td>10px</td><td>layoutTitle_bottom_padding</td></tr>
+            <tr><td><span class="boxed">3</span> Spacing between vertically aligned layouts</td><td>42px</td><td>gridView_spacing / tableView_spacing</td></tr>
+            <tr><td><span class="boxed">4</span> Title font size</td><td>24px</td><td>-</td></tr>
+            <tr><td><span class="boxed">4</span> Title visibility</td><td>Always visible</td><td>-</td></tr>
+            <tr><td><span class="boxed">5</span> Mixing layout types</td><td>Only mix layout types when the combination of content requires it</td><td>-</td></tr>
+        </table>
+    </div>
+
+    <div class="container">
+    	<h2>Grid Layout Dynamic Properties</h2>
+        <img src="dynamicProperties.png" alt="Dynamic Properties" class="larger-image">
+        <table>
+            <tr><th>Property</th><th>Guideline</th><th>VLCStyle</th></tr>
+            <tr><td><span class="boxed">1</span> Margins</td><td>Gradual scaling from 16 to 24px when the window size is between 600 and 1000px</td><td>dynamicAppMargins</td></tr>
+            <tr><td><span class="boxed">2</span> Gutter</td><td>two items: 26px<br>three items: 28px<br>four or more items: 32px</td><td>-</td></tr>
+            <tr><td><span class="boxed">3</span> Max items per row</td><td>16:9 ratio: 6<br>1:1 ratio: 10 (12 if file manager)</td><td>-</td></tr>
+        </table>
+    </div>
+</body>
+</html>
