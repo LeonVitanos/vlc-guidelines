@@ -46,62 +46,283 @@
             padding: 2px 5px;
         }
         th:nth-child(1), td:nth-child(1) {
-            width: 30%; /* Make the first column wider */
+            width: 25%;
         }
         th:nth-child(2), td:nth-child(2) {
-            width: 40%;
+            width: 35%;
         }
         th:nth-child(3), td:nth-child(3) {
-            width: 30%;
+            width: 20%;
+        }
+        th:nth-child(4), td:nth-child(4) {
+            width: 20%;
         }
         h2 {
             margin-bottom: 10px;
             margin-top: 50px;
         }
         .custom-margin {
-	    margin-top: 20px; /* Adjust as needed */
-	}
+            margin-top: 20px;
+        }
+
+        .image-popup-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .popup-trigger {
+            color: #007bff;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .popup-image {
+            display: none;
+            position: fixed;
+            border: 1px solid #ddd;
+            background-color: white;
+            padding: 5px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            max-width: 800px;
+            width: 800px;
+            height: auto;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+        }
+
+        .image-popup-container.show-popup .popup-image {
+            display: block;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-    	<h2 class="custom-margin">Properties of a Grid Item</h2>
-        <img src="GRIDITEM.png" alt="Grid Item" class="first-image">
-        <table>
-            <tr><th>Property</th><th>Guideline</th><th>VLCStyle</th></tr>
-            <tr><td><span class="boxed">1</span> Background padding</td><td>8px</td><td>gridItemSelectedBorder</td></tr>
-            <tr><td><span class="boxed">2</span> Thumbnail dimensions</td><td>Fill <span class="boxed">7</span>, with <span class="boxed">1</span> as padding, a 16:9 aspect ratio, and a minimum width of 305px</td><td>-</td></tr>
-            <tr><td><span class="boxed">3</span> Title top margin</td><td>12px</td><td>gridItemTitle_topMargin</td></tr>
-            <tr><td><span class="boxed">4</span> Title font size</td><td>13px</td><td>gridItemTitle_height</td></tr>
-            <tr><td><span class="boxed">5</span> Subtitle top margin</td><td>9px</td><td>gridItemSubtitle_topMargin</td></tr>
-            <tr><td><span class="boxed">6</span> Subtitle font size</td><td>12px</td><td>gridItemSubtitle_height</td></tr>
-            <tr><td><span class="boxed">7</span> Cell width</td><td>Responsive and maximized, constrained by available window width, minimum thumbnail width, and horizontal spacing (gutter) of grid items</td><td>-</td></tr>
-        </table>
-    </div>
+<div class="container">
+    <h2 class="custom-margin">Properties of a Grid Item</h2>
+    <img src="GRIDITEM.png" alt="Grid Item" class="first-image">
+    <table>
+        <tr><th>Property</th><th>Guideline</th><th>VLCStyle</th><th>Comparison</th></tr>
+        <tr>
+            <td><span class="boxed">1</span> Background padding</td>
+            <td>8px</td>
+            <td>gridItemSelectedBorder</td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">2</span> Thumbnail dimensions</td>
+            <td>Fill <span class="boxed">7</span>, with <span class="boxed">1</span> as padding, a 16:9 aspect ratio, and a minimum width of 305px</td>
+            <td>-</td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">3</span> Title top margin</td>
+            <td>12px</td>
+            <td>gridItemTitle_topMargin</td>
+            <td>
+                <div class="image-popup-container">
+                    <span class="popup-trigger">View Comparison</span>
+                    <img src="figures/Grid_Item_Properties/3-5-title-subtitle-height.png" alt="Comparison Title Margin" class="popup-image">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">4</span> Title font size</td>
+            <td>13px</td>
+            <td>gridItemTitle_height</td>
+            <td>
+                <div class="image-popup-container">
+                    <span class="popup-trigger">View Comparison</span>
+                    <img src="figures/Grid_Item_Properties/4-6-fontSize.png" alt="Comparison Title Font" class="popup-image">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">5</span> Subtitle top margin</td>
+            <td>9px</td>
+            <td>gridItemSubtitle_topMargin</td>
+            <td>
+                <div class="image-popup-container">
+                    <span class="popup-trigger">View Comparison</span>
+                    <img src="figures/Grid_Item_Properties/3-5-title-subtitle-height.png" alt="Comparison Subtitle Margin" class="popup-image">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">6</span> Subtitle font size</td>
+            <td>12px</td>
+            <td>gridItemSubtitle_height</td>
+            <td>
+                <div class="image-popup-container">
+                    <span class="popup-trigger">View Comparison</span>
+                    <img src="figures/Grid_Item_Properties/4-6-fontSize.png" alt="Comparison Subtitle Font" class="popup-image">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">7</span> Cell width</td>
+            <td>Responsive and maximized, constrained by available window width, minimum thumbnail width, and horizontal spacing (gutter) of grid items</td>
+            <td>-</td>
+            <td>
+            </td>
+        </tr>
+    </table>
+</div>
 
-    <div class="container">
+<div class="container">
     <h2>General Layout Properties</h2>
-        <img src="consistencyGuidelines.png" alt="Consistency Guidelines" class="mid-sized-image">
-        <table>
-            <tr><th>Property</th><th>Guideline</th><th>VLCStyle</th></tr>
-            <tr><td><span class="boxed">1</span> Top padding of top-most title</td><td>32px</td><td>layoutTitle_top_padding</td></tr>
-            <tr><td><span class="boxed">2</span> Bottom padding of title</td><td>10px</td><td>layoutTitle_bottom_padding</td></tr>
-            <tr><td><span class="boxed">3</span> Spacing between vertically aligned layouts</td><td>42px</td><td>gridView_spacing / tableView_spacing</td></tr>
-            <tr><td><span class="boxed">4</span> Title font size</td><td>24px</td><td>-</td></tr>
-            <tr><td><span class="boxed">4</span> Title visibility</td><td>Always visible</td><td>-</td></tr>
-            <tr><td><span class="boxed">5</span> Mixing layout types</td><td>Only mix layout types when the combination of content requires it</td><td>-</td></tr>
-        </table>
-    </div>
+    <img src="consistencyGuidelines.png" alt="Consistency Guidelines" class="mid-sized-image">
+    <table>
+        <tr><th>Property</th><th>Guideline</th><th>VLCStyle</th><th>Comparison</th></tr>
+        <tr>
+            <td><span class="boxed">1</span> Top padding of top-most title</td>
+            <td>32px</td>
+            <td>layoutTitle_top_padding</td>
+            <td>
+                <div class="image-popup-container">
+                    <span class="popup-trigger">View Comparison</span>
+                    <img src="figures/General_Layout_Properties/1-topmostTopPadding.png" alt="Comparison Layout Top Padding" class="popup-image">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">2</span> Bottom padding of title</td>
+            <td>10px</td>
+            <td>layoutTitle_bottom_padding</td>
+            <td>
+                <div class="image-popup-container">
+                    <span class="popup-trigger">View Comparison</span>
+                    <img src="figures/General_Layout_Properties/2.layouttitlebottompadding.png" alt="Comparison Layout Bottom Padding" class="popup-image">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">3</span> Spacing between vertically aligned layouts</td>
+            <td>42px</td>
+            <td>gridView_spacing / tableView_spacing</td>
+            <td>
+                <div class="image-popup-container">
+                    <span class="popup-trigger">View Comparison</span>
+                    <img src="figures/General_Layout_Properties/3.spacingVertically.png" alt="Comparison Layout Spacing" class="popup-image">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">4</span> Title font size</td>
+            <td>24px</td>
+            <td>-</td>
+            <td>
+                <div class="image-popup-container">
+                    <span class="popup-trigger">View Comparison</span>
+                    <img src="figures/General_Layout_Properties/4-layouttitlefontsize.png" alt="Comparison Layout Title Font" class="popup-image">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">4</span> Title visibility</td>
+            <td>Always visible</td>
+            <td>-</td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">5</span> Mixing layout types</td>
+            <td>Only mix layout types when the combination of content requires it</td>
+            <td>-</td>
+            <td>
+            </td>
+        </tr>
+    </table>
+</div>
 
-    <div class="container">
-    	<h2>Grid Layout Dynamic Properties</h2>
-        <img src="dynamicProperties.png" alt="Dynamic Properties" class="larger-image">
-        <table>
-            <tr><th>Property</th><th>Guideline</th><th>VLCStyle</th></tr>
-            <tr><td><span class="boxed">1</span> Margins</td><td>Gradual scaling from 16 to 24px when the window size is between 600 and 1000px</td><td>dynamicAppMargins</td></tr>
-            <tr><td><span class="boxed">2</span> Gutter</td><td>two items: 26px<br>three items: 28px<br>four or more items: 32px</td><td>-</td></tr>
-            <tr><td><span class="boxed">3</span> Max items per row</td><td>16:9 ratio: 6<br>1:1 ratio: 10 (12 if file manager)</td><td>-</td></tr>
-        </table>
-    </div>
+<div class="container">
+    <h2>Grid Layout Dynamic Properties</h2>
+    <img src="dynamicProperties.png" alt="Dynamic Properties" class="larger-image">
+    <table>
+        <tr><th>Property</th><th>Guideline</th><th>VLCStyle</th><th>Comparison</th></tr>
+        <tr>
+            <td><span class="boxed">1</span> Margins</td>
+            <td>Gradual scaling from 16 to 24px when the window size is between 600 and 1000px</td>
+            <td>dynamicAppMargins</td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">2</span> Gutter</td>
+            <td>two items: 26px<br>three items: 28px<br>four or more items: 32px</td>
+            <td>-</td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td><span class="boxed">3</span> Max items per row</td>
+            <td>16:9 ratio: 6<br>1:1 ratio: 10 (12 if file manager)</td>
+            <td>-</td>
+            <td>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const popupContainers = document.querySelectorAll('.image-popup-container');
+
+        popupContainers.forEach(container => {
+            const trigger = container.querySelector('.popup-trigger');
+            const popupImage = container.querySelector('.popup-image');
+
+            if (trigger && popupImage) {
+                let timeoutId;
+
+                trigger.addEventListener('mouseenter', () => {
+                    clearTimeout(timeoutId);
+                    container.classList.add('show-popup');
+
+                    const rect = trigger.getBoundingClientRect();
+                    const viewportWidth = window.innerWidth;
+                    const popupWidth = popupImage.offsetWidth;
+
+                    let leftPosition = rect.left + (rect.width / 2);
+                    let transformX = '-50%';
+
+                    if (leftPosition - (popupWidth / 2) < 0) {
+                        leftPosition = 10;
+                        transformX = '0%';
+                    }
+                    else if (leftPosition + (popupWidth / 2) > viewportWidth) {
+                        leftPosition = viewportWidth - 10;
+                        transformX = '-100%';
+                    }
+
+                    popupImage.style.left = `${leftPosition}px`;
+                    popupImage.style.transform = `translateX(${transformX})`;
+                    popupImage.style.top = `${rect.top - popupImage.offsetHeight - 10}px`;
+
+                    if (popupImage.getBoundingClientRect().top < 0) {
+                        popupImage.style.top = `${rect.bottom + 10}px`;
+                    }
+                });
+
+                trigger.addEventListener('mouseleave', () => {
+                    timeoutId = setTimeout(() => {
+                        container.classList.remove('show-popup');
+                    }, 100);
+                });
+
+                popupImage.addEventListener('mouseenter', () => {
+                    clearTimeout(timeoutId);
+                });
+                popupImage.addEventListener('mouseleave', () => {
+                    timeoutId = setTimeout(() => {
+                        container.classList.remove('show-popup');
+                    }, 100);
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>
