@@ -18,14 +18,14 @@
             height: auto;
         }
         .first-image {
-            width: 350px;
+            width: 300px;
             margin-top: 10px
         }
         .mid-sized-image {
-            width: 880px;
+            width: 600px;
         }
         .larger-image {
-            width: 950px;
+            width: 650px;
         }
         table {
             width: 100%;
@@ -90,6 +90,12 @@
             pointer-events: none;
             top: 0;
             left: 0;
+            transform-origin: top left;
+        }
+
+        .dynamic-properties-section .popup-image {
+            max-width: 600px;
+            width: 600px;
         }
 
         .image-popup-container.show-popup .popup-image {
@@ -116,7 +122,9 @@
         </tr>
         <tr>
             <td><span class="boxed">2</span> Thumbnail dimensions</td>
-            <td>Fill <span class="boxed">7</span>, with <span class="boxed">1</span> as padding, a 16:9 aspect ratio, and a minimum width of 305px</td>
+            <td>Fill <span class="boxed">7</span>, with <span class="boxed">1</span> as padding, a 16:9 aspect ratio, and a minimum width
+                of 305px
+            </td>
             <td>-</td>
             <td>
             </td>
@@ -167,7 +175,9 @@
         </tr>
         <tr>
             <td><span class="boxed">7</span> Cell width</td>
-            <td>Responsive and maximized, constrained by available window width, minimum thumbnail width, and horizontal spacing (gutter) of grid items</td>
+            <td>Responsive and maximized, constrained by available window width, minimum thumbnail width, and horizontal spacing
+                (gutter) of grid items
+            </td>
             <td>-</td>
             <td>
             </td>
@@ -241,7 +251,7 @@
     </table>
 </div>
 
-<div class="container">
+<div class="container dynamic-properties-section">
     <h2>Grid Layout Dynamic Properties</h2>
     <img src="dynamicProperties.png" alt="Dynamic Properties" class="larger-image">
     <table>
@@ -297,29 +307,37 @@
                     clearTimeout(timeoutId);
                     container.classList.add('show-popup');
 
-                    const rect = trigger.getBoundingClientRect();
-                    const viewportWidth = window.innerWidth;
-                    const popupWidth = popupImage.offsetWidth;
+                    requestAnimationFrame(() => {
+                        const rect = trigger.getBoundingClientRect();
+                        const viewportHeight = window.innerHeight;
+                        const popupWidth = popupImage.offsetWidth;
+                        const popupHeight = popupImage.offsetHeight;
 
-                    let leftPosition = rect.left + (rect.width / 2);
-                    let transformX = '-50%';
+                        let finalLeft = 0;
+                        let finalTop = 0;
+                        let finalTransformY = '0%';
 
-                    if (leftPosition - (popupWidth / 2) < 0) {
-                        leftPosition = 10;
-                        transformX = '0%';
-                    }
-                    else if (leftPosition + (popupWidth / 2) > viewportWidth) {
-                        leftPosition = viewportWidth - 10;
-                        transformX = '-100%';
-                    }
+                        finalLeft = rect.left - popupWidth - 10;
 
-                    popupImage.style.left = `${leftPosition}px`;
-                    popupImage.style.transform = `translateX(${transformX})`;
-                    popupImage.style.top = `${rect.top - popupImage.offsetHeight - 10}px`;
+                        if (finalLeft < 10) {
+                            finalLeft = 10;
+                        }
 
-                    if (popupImage.getBoundingClientRect().top < 0) {
-                        popupImage.style.top = `${rect.bottom + 10}px`;
-                    }
+                        finalTop = rect.top + (rect.height / 2);
+                        finalTransformY = '-50%';
+
+                        if (finalTop - (popupHeight / 2) < 0) {
+                            finalTop = 10;
+                            finalTransformY = '0%';
+                        } else if (finalTop + (popupHeight / 2) > viewportHeight) {
+                            finalTop = viewportHeight - popupHeight - 10;
+                            finalTransformY = '0%';
+                        }
+
+                        popupImage.style.left = `${finalLeft}px`;
+                        popupImage.style.top = `${finalTop}px`;
+                        popupImage.style.transform = `translateY(${finalTransformY})`;
+                    });
                 });
 
                 trigger.addEventListener('mouseleave', () => {
