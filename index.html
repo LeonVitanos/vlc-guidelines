@@ -65,46 +65,37 @@
             margin-top: 20px;
         }
 
-        .image-popup-container {
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+        }
+        .modal-content {
+            background: white;
+            padding: 10px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             position: relative;
-            display: inline-block;
+        }
+        .modal-content img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
         }
 
         .popup-trigger {
             color: #007bff;
             text-decoration: underline;
             cursor: pointer;
-        }
-
-        .popup-image {
-            display: none;
-            position: fixed;
-            border: 1px solid #ddd;
-            background-color: white;
-            padding: 5px;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-            z-index: 1000;
-            max-width: 800px;
-            width: 800px;
-            height: auto;
-            pointer-events: none;
-            top: 0;
-            left: 0;
-            transform-origin: top left;
-        }
-
-        .dynamic-properties-section .popup-image {
-            max-width: 600px;
-            width: 600px;
-        }
-
-        .smaller-popup {
-            max-width: 450px;
-            width: 450px;
-        }
-
-        .image-popup-container.show-popup .popup-image {
-            display: block;
         }
     </style>
 </head>
@@ -119,10 +110,7 @@
             <td>8px</td>
             <td>gridItemSelectedBorder</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/Grid_Item_Properties/padding.png" alt="Comparison Title Margin" class="popup-image">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/Grid_Item_Properties/padding.png">View Comparison</span>
             </td>
         </tr>
         <tr>
@@ -139,10 +127,7 @@
             <td>12px</td>
             <td>gridItemTitle_topMargin</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/Grid_Item_Properties/title-subtitle-margin.png" alt="Comparison Title Margin" class="popup-image">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/Grid_Item_Properties/title-subtitle-margin.png">View Comparison</span>
             </td>
         </tr>
         <tr>
@@ -150,10 +135,7 @@
             <td>13px</td>
             <td>gridItemTitle_height</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/Grid_Item_Properties/title-subtitle-fontSize.png" alt="Comparison Title Font" class="popup-image">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/Grid_Item_Properties/title-subtitle-fontSize.png">View Comparison</span>
             </td>
         </tr>
         <tr>
@@ -161,10 +143,7 @@
             <td>9px</td>
             <td>gridItemSubtitle_topMargin</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/Grid_Item_Properties/title-subtitle-margin.png" alt="Comparison Subtitle Margin" class="popup-image">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/Grid_Item_Properties/title-subtitle-margin.png">View Comparison</span>
             </td>
         </tr>
         <tr>
@@ -172,10 +151,7 @@
             <td>12px</td>
             <td>gridItemSubtitle_height</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/Grid_Item_Properties/title-subtitle-fontSize.png" alt="Comparison Subtitle Font" class="popup-image">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/Grid_Item_Properties/title-subtitle-fontSize.png">View Comparison</span>
             </td>
         </tr>
         <tr>
@@ -200,10 +176,7 @@
             <td>32px</td>
             <td>layoutTitle_top_padding</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/General_Layout_Properties/1-topmostLayoutTopMargin.png" alt="Comparison Layout Top Padding" class="popup-image">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/General_Layout_Properties/1-topmostLayoutTopMargin.png">View Comparison</span>
             </td>
         </tr>
         <tr>
@@ -211,10 +184,7 @@
             <td>10px</td>
             <td>layoutTitle_bottom_padding</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/General_Layout_Properties/2.layoutTitleBottomMargin.png" alt="Comparison Layout Bottom Padding" class="popup-image">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/General_Layout_Properties/2.layoutTitleBottomMargin.png">View Comparison</span>
             </td>
         </tr>
         <tr>
@@ -222,10 +192,7 @@
             <td>42px</td>
             <td>gridView_spacing / tableView_spacing</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/General_Layout_Properties/3.spacingVertically.png" alt="Comparison Layout Spacing" class="popup-image">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/General_Layout_Properties/3.spacingVertically.png">View Comparison</span>
             </td>
         </tr>
         <tr>
@@ -233,10 +200,7 @@
             <td>24px</td>
             <td>-</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/General_Layout_Properties/4-layouttitlefontsize.png" alt="Comparison Layout Title Font" class="popup-image">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/General_Layout_Properties/4-layouttitlefontsize.png">View Comparison</span>
             </td>
         </tr>
         <tr>
@@ -251,10 +215,7 @@
             <td>Only mix layout types when the combination of content requires it</td>
             <td>-</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/General_Layout_Properties/5-mixedLayoutDesigns.png" alt="Comparison Mixed Layout Designs" class="popup-image smaller-popup">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/General_Layout_Properties/5-mixedLayoutDesigns.png" data-image-size="450px">View Comparison</span>
             </td>
         </tr>
     </table>
@@ -270,10 +231,7 @@
             <td>Gradual scaling from 16 to 24px when the layout size is between 600 and 1000px</td>
             <td>dynamicAppMargins</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/Grid_Layout_Dynamic_Properties/margins.png" alt="Comparison Title Margin" class="popup-image">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/Grid_Layout_Dynamic_Properties/margins.png">View Comparison</span>
             </td>
         </tr>
         <tr>
@@ -281,10 +239,7 @@
             <td>two items: 26px<br>three items: 28px<br>four or more items: 32px</td>
             <td>-</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/Grid_Layout_Dynamic_Properties/gutter.png" alt="Comparison Title Margin" class="popup-image">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/Grid_Layout_Dynamic_Properties/gutter.png">View Comparison</span>
             </td>
         </tr>
         <tr>
@@ -292,77 +247,57 @@
             <td>16:9 ratio: 6<br>1:1 ratio: 10 (12 if file manager)</td>
             <td>-</td>
             <td>
-                <div class="image-popup-container">
-                    <span class="popup-trigger">View Comparison</span>
-                    <img src="figures/Grid_Layout_Dynamic_Properties/items.png" alt="Comparison Title Margin" class="popup-image">
-                </div>
+                <span class="popup-trigger" data-image-src="figures/Grid_Layout_Dynamic_Properties/items.png" data-image-size="600px">View Comparison</span>
             </td>
         </tr>
     </table>
 </div>
 
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+        <img src="" id="modalImage" alt="Comparison Image">
+    </div>
+</div>
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const popupContainers = document.querySelectorAll('.image-popup-container');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalImage = document.getElementById('modalImage');
+        const popupTriggers = document.querySelectorAll('.popup-trigger');
 
-        popupContainers.forEach(container => {
-            const trigger = container.querySelector('.popup-trigger');
-            const popupImage = container.querySelector('.popup-image');
+        popupTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default link behavior if trigger is an anchor
 
-            if (trigger && popupImage) {
-                let timeoutId;
+                const imageSrc = trigger.getAttribute('data-image-src');
+                const imageSize = trigger.getAttribute('data-image-size');
 
-                trigger.addEventListener('mouseenter', () => {
-                    clearTimeout(timeoutId);
-                    container.classList.add('show-popup');
+                if (imageSrc) {
+                    modalImage.src = imageSrc;
 
-                    requestAnimationFrame(() => {
-                        const rect = trigger.getBoundingClientRect();
-                        const viewportHeight = window.innerHeight;
-                        const popupWidth = popupImage.offsetWidth;
-                        const popupHeight = popupImage.offsetHeight;
+                    if (imageSize) {
+                        modalImage.style.width = imageSize;
+                        modalImage.style.maxWidth = '100%';
+                    } else {
+                        modalImage.style.width = '800px';
+                        modalImage.style.maxWidth = '100%';
+                    }
 
-                        let finalLeft = 0;
-                        let finalTop = 0;
-                        let finalTransformY = '0%';
+                    modalOverlay.style.display = 'flex';
+                }
+            });
+        });
 
-                        finalLeft = rect.left - popupWidth - 10;
+        // Close the modal if the user clicks on the overlay or the image
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay || event.target === modalImage) {
+                modalOverlay.style.display = 'none';
+            }
+        });
 
-                        if (finalLeft < 10) {
-                            finalLeft = 10;
-                        }
-
-                        finalTop = rect.top + (rect.height / 2);
-                        finalTransformY = '-50%';
-
-                        if (finalTop - (popupHeight / 2) < 0) {
-                            finalTop = 10;
-                            finalTransformY = '0%';
-                        } else if (finalTop + (popupHeight / 2) > viewportHeight) {
-                            finalTop = viewportHeight - popupHeight - 10;
-                            finalTransformY = '0%';
-                        }
-
-                        popupImage.style.left = `${finalLeft}px`;
-                        popupImage.style.top = `${finalTop}px`;
-                        popupImage.style.transform = `translateY(${finalTransformY})`;
-                    });
-                });
-
-                trigger.addEventListener('mouseleave', () => {
-                    timeoutId = setTimeout(() => {
-                        container.classList.remove('show-popup');
-                    }, 100);
-                });
-
-                popupImage.addEventListener('mouseenter', () => {
-                    clearTimeout(timeoutId);
-                });
-                popupImage.addEventListener('mouseleave', () => {
-                    timeoutId = setTimeout(() => {
-                        container.classList.remove('show-popup');
-                    }, 100);
-                });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modalOverlay.style.display === 'flex') {
+                modalOverlay.style.display = 'none';
             }
         });
     });
